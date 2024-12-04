@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Texto que Escreve Sozinho</title>
+    <style>
+        /* POPPINS FONT */
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background: linear-gradient(to bottom, #1e1c1e, #3d2f2d);
+            flex-direction: column;
+        }
+
+        h1 {
+            font-size: 70px;
+            color: white;
+            margin-bottom: 20px;
+            /* Adiciona um pequeno espaço entre o título e o texto */
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        .nav-logo p {
+            position: absolute;
+            top: 10px;
+            left: 20px;
+            font-size: 24px;
+            font-weight: bold;
+            color: white;
+            margin-left: 212px;
+            margin-bottom: 3px;
+        }
+
+        /* Estilo básico para o texto (efeito máquina de escrever) */
+        #texto {
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 24px;
+            white-space: nowrap;
+            /* Impede que o texto quebre para a próxima linha */
+            overflow: hidden;
+            /* Esconde qualquer parte do texto que ultrapasse os limites do elemento */
+            color: white;
+            border-right: 3px solid rgb(255, 255, 255);
+            /* Simula o cursor da máquina de escrever */
+            margin-top: 10px;
+        }
+
+        /* Navegação */
+        .nav {
+            position: fixed;
+            top: 0;
+            display: flex;
+            justify-content: space-around;
+            width: 100%;
+            height: 100px;
+            line-height: 100px;
+            background: linear-gradient(rgba(39, 39, 39, 0.6), transparent);
+            z-index: 100;
+        }
+
+        .nav-logo p {
+            color: white;
+            font-size: 25px;
+            font-weight: 600;
+        }
+
+        .nav-menu ul {
+            display: flex;
+        }
+
+        /* Responsividade */
+        @media only screen and (max-width: 786px) {
+            .nav-button {
+                display: none;
+            }
+
+            .nav-menu.responsive {
+                top: 100px;
+            }
+
+            .nav-menu {
+                position: absolute;
+                top: -800px;
+                display: flex;
+                justify-content: center;
+                background: rgba(255, 255, 255, 0.2);
+                width: 100%;
+                height: 90vh;
+                backdrop-filter: blur(20px);
+                transition: .3s;
+            }
+
+            .nav-menu ul {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .nav-menu-btn {
+                display: block;
+            }
+
+            .nav-menu-btn i {
+                font-size: 25px;
+                color: #fff;
+                padding: 10px;
+                background: rgba(255, 255, 255, 0.2);
+                border-radius: 50%;
+                cursor: pointer;
+                transition: .3s;
+            }
+
+            .nav-menu-btn i:hover {
+                background: rgba(255, 255, 255, 0.15);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="nav">
+        <div class="nav-logo">
+            <p>ALEXANDRIA</p>
+        </div>
+    </div>
+    <h1>Bem-vindo</h1>
+    <div id="texto"></div>
+
+    <script>
+        var texto = "O conhecimento na palma da sua mão."; // Texto para digitar
+        var index = 0;
+        var speed = 100; // Velocidade do efeito (em milissegundos)
+
+        function escreverTexto() {
+            if (index < texto.length) {
+                document.getElementById("texto").innerHTML += texto.charAt(index);
+                index++;
+                setTimeout(escreverTexto, speed); // Chama a função novamente com o intervalo de tempo
+            }
+        }
+
+        escreverTexto(); // Chama a função para começar o efeito
+    </script>
+</body>
+
+</html>
